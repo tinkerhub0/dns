@@ -7,12 +7,17 @@
   type: A
   value: 187.127.143.52
 
-chat:
+'*.tinkerspace':
+  ttl: 300
+  type: A
+  value: 187.127.143.52
+
+auth:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
 
-auth:
+chat:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
@@ -26,8 +31,3 @@ monitor:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
-
-'*.tinkerspace':
-  ttl: 300
-  type: A
-  value: 187.127.143.52
