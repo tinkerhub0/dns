@@ -7,7 +7,7 @@
   type: A
   value: 187.127.143.52
 
-'*.tinkerspace':
+'*':
   ttl: 300
   type: A
   value: 187.127.143.52
