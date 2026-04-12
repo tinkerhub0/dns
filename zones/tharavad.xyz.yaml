@@ -1,0 +1,33 @@
+---
+# tharavad.xyz — managed by octoDNS
+# PRs for changes, GitHub Actions applies on merge to main
+
+'':
+  ttl: 300
+  type: A
+  value: 187.127.143.52
+
+chat:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+auth:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+headscale:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+monitor:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+'*.tinkerspace':
+  ttl: 300
+  type: A
+  value: 187.127.143.52
