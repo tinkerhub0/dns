@@ -1,0 +1,32 @@
+name: DNS Sync
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install octoDNS
+        run: pip install octodns octodns-hetzner
+
+      - name: Validate (dry-run on PR)
+        if: github.event_name == 'pull_request'
+        run: octodns-sync --config-file config.yaml
+        env:
+          HETZNER_TOKEN: ${{ secrets.HETZNER_TOKEN }}
+
+      - name: Apply (on merge to main)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: octodns-sync --config-file config.yaml --doit
+        env:
+          HETZNER_TOKEN: ${{ secrets.HETZNER_TOKEN }}
