@@ -31,8 +31,3 @@ monitor:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
-
-wiki:
-  ttl: 300
-  type: CNAME
-  value: tharavad.xyz.
