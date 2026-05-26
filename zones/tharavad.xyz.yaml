@@ -5,12 +5,12 @@
 '':
   ttl: 300
   type: A
-  value: 187.127.143.52
+  value: 178.105.120.5
 
 '*':
   ttl: 300
   type: A
-  value: 187.127.143.52
+  value: 178.105.120.5
 
 auth:
   ttl: 300
