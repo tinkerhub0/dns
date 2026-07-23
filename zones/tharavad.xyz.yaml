@@ -2,8 +2,12 @@
 # tharavad.xyz — managed by octoDNS
 # PRs for changes, GitHub Actions applies on merge to main
 #
-# cf.tharavad.xyz is delegated to Cloudflare (Tunnel / Headscale only).
-# Everything else stays on Hetzner.
+# NOTE: Cloudflare free/standard cannot host zone "cf.tharavad.xyz" alone
+# (subdomain-as-zone = Enterprise). Options for Headscale tunnel:
+#   A) Move this apex to Cloudflare (octoDNS target = cloudflare) + hs.tharavad.xyz
+#   B) Keep Hetzner; use a separate domain on CF only for the tunnel
+#   C) No CF — port-forward / other
+# Do NOT NS-delegate "cf" — it does not create a CF zone on free plans.
 
 '':
   ttl: 300
@@ -15,18 +19,6 @@
   type: A
   value: 178.105.120.5
 
-# --- Cloudflare subzone (Headscale tunnel lives here) ---
-# 1. Cloudflare → Add site → zone name: cf.tharavad.xyz
-# 2. CF shows two nameservers — put them below (replace ada/bob if different)
-# 3. Merge this file so Hetzner publishes the NS delegation
-# 4. Tunnel public hostname: hs.cf.tharavad.xyz → http://127.0.0.1:8080
-cf:
-  ttl: 3600
-  type: NS
-  values:
-    - ada.ns.cloudflare.com.
-    - bob.ns.cloudflare.com.
-
 auth:
   ttl: 300
   type: CNAME
@@ -37,8 +29,9 @@ chat:
   type: CNAME
   value: tharavad.xyz.
 
-# legacy name — club site, not the mesh control plane
-# mesh Headscale: https://hs.cf.tharavad.xyz (Cloudflare Tunnel)
+# When apex is on Cloudflare + tunnel exists, set this to the tunnel CNAME
+# (e.g. <id>.cfargotunnel.com) or let the Tunnel UI create the record.
+# Until then it still points at the main site.
 headscale:
   ttl: 300
   type: CNAME
