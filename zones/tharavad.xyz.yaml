@@ -1,6 +1,9 @@
 ---
 # tharavad.xyz — managed by octoDNS
 # PRs for changes, GitHub Actions applies on merge to main
+#
+# cf.tharavad.xyz is delegated to Cloudflare (Tunnel / Headscale only).
+# Everything else stays on Hetzner.
 
 '':
   ttl: 300
@@ -12,6 +15,18 @@
   type: A
   value: 178.105.120.5
 
+# --- Cloudflare subzone (Headscale tunnel lives here) ---
+# 1. Cloudflare → Add site → zone name: cf.tharavad.xyz
+# 2. CF shows two nameservers — put them below (replace ada/bob if different)
+# 3. Merge this file so Hetzner publishes the NS delegation
+# 4. Tunnel public hostname: hs.cf.tharavad.xyz → http://127.0.0.1:8080
+cf:
+  ttl: 3600
+  type: NS
+  values:
+    - ada.ns.cloudflare.com.
+    - bob.ns.cloudflare.com.
+
 auth:
   ttl: 300
   type: CNAME
@@ -22,6 +37,8 @@ chat:
   type: CNAME
   value: tharavad.xyz.
 
+# legacy name — club site, not the mesh control plane
+# mesh Headscale: https://hs.cf.tharavad.xyz (Cloudflare Tunnel)
 headscale:
   ttl: 300
   type: CNAME
@@ -31,7 +48,7 @@ monitor:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
-  
+
 wiki:
   ttl: 300
   type: CNAME
