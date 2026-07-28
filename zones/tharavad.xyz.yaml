@@ -9,6 +9,8 @@
 #   C) No CF — port-forward / other
 # Do NOT NS-delegate "cf" — it does not create a CF zone on free plans.
 
+# apex + wildcard → edge (public SSH bastion + site)
+# members: ssh you@you.tharavad.xyz
 '':
   ttl: 300
   type: A
@@ -43,6 +45,12 @@ monitor:
   value: tharavad.xyz.
 
 wiki:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+# landa control plane API (edge nginx → :8787)
+landa:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
