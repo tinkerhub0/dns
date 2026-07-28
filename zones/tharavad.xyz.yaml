@@ -49,8 +49,14 @@ wiki:
   type: CNAME
   value: tharavad.xyz.
 
-# landa control plane API (edge nginx → :8787)
+# landa console (static UI)
 landa:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+# landa control plane API (edge nginx → :8787)
+landa-back:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
