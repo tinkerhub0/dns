@@ -60,3 +60,9 @@ landa-back:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
+
+# Uptime Kuma
+status:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
