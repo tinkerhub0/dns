@@ -39,16 +39,6 @@ headscale:
   type: CNAME
   value: tharavad.xyz.
 
-monitor:
-  ttl: 300
-  type: CNAME
-  value: tharavad.xyz.
-
-wiki:
-  ttl: 300
-  type: CNAME
-  value: tharavad.xyz.
-
 # landa console (static UI)
 landa:
   ttl: 300
@@ -57,6 +47,21 @@ landa:
 
 # landa control plane API (edge nginx → :8787)
 landa-back:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+monitor:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+status:
+  ttl: 300
+  type: CNAME
+  value: tharavad.xyz.
+
+wiki:
   ttl: 300
   type: CNAME
   value: tharavad.xyz.
